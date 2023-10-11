@@ -5,6 +5,7 @@ plugins {
   jacoco
   checkstyle
   pmd
+  id("info.solidsoft.pitest") version "1.15.0"
 }
 
 repositories {
@@ -13,6 +14,7 @@ repositories {
 
 dependencies {
   testImplementation("org.junit.jupiter:junit-jupiter:5.10.0")
+  testImplementation("org.pitest:pitest-junit5-plugin:1.2.0")
 }
 
 tasks.test {
@@ -56,4 +58,11 @@ pmd {
     "category/java/performance.xml",
     "category/java/security.xml",
   )
+}
+
+pitest {
+  targetClasses.set(listOf("com.gildedrose.*"))
+  threads.set(4)
+  outputFormats.set(listOf("HTML", "XML"))
+  timestampedReports.set(false)
 }
