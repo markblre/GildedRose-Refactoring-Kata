@@ -1,0 +1,10 @@
+tags
+.gradle
+build
+bin
+.project
+.classpath
+.settings
+.pmd
+.DS_Store
+.idea
