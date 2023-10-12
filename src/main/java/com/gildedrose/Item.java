@@ -85,17 +85,10 @@ public class Item {
       case SULFURAS:
         break;
       default:
-        if (this.quality > MIN_QUALITY_PRODUCT) {
-          this.quality = this.quality - 1;
-        }
+        this.sellIn -= 1;
 
-        this.sellIn = this.sellIn - 1;
+        this.quality = Math.max(this.quality - (this.sellIn >= EXPIRY_DATE ? 1 : 2), MIN_QUALITY_PRODUCT);
 
-        if (this.sellIn < EXPIRY_DATE) {
-          if (this.quality > MIN_QUALITY_PRODUCT) {
-            this.quality = this.quality - 1;
-          }
-        }
         break;
     }
   }
