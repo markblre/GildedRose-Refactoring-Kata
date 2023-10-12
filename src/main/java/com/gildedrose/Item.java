@@ -39,23 +39,29 @@ public class Item {
   public String toString() {
       return this.name + ", " + this.sellIn + ", " + this.quality;
   }
-
   /**
    * Met à jour la qualité du produit.
    */
   public void updateQuality() {
-    if (!this.name.equals(AGED_BRIE)
-      && !this.name.equals(BACKSTAGE_PASSES)) {
-      if (this.quality > MIN_QUALITY_PRODUCT) {
-        if (!this.name.equals(SULFURAS)) {
-          this.quality = this.quality - 1;
+    switch (this.name) {
+      case AGED_BRIE:
+        if (this.quality < MAX_QUALITY_PRODUCT) {
+          this.quality = this.quality + 1;
         }
-      }
-    } else {
-      if (this.quality < MAX_QUALITY_PRODUCT) {
-        this.quality = this.quality + 1;
 
-        if (this.name.equals(BACKSTAGE_PASSES)) {
+        this.sellIn = this.sellIn - 1;
+
+        if (this.sellIn < EXPIRY_DATE) {
+          if (this.quality < MAX_QUALITY_PRODUCT) {
+            this.quality = this.quality + 1;
+          }
+        }
+
+        break;
+      case BACKSTAGE_PASSES:
+        if (this.quality < MAX_QUALITY_PRODUCT) {
+          this.quality = this.quality + 1;
+
           if (this.sellIn < BACKSTAGE_PASSES_LIMIT_11) {
             if (this.quality < MAX_QUALITY_PRODUCT) {
               this.quality = this.quality + 1;
@@ -68,29 +74,29 @@ public class Item {
             }
           }
         }
-      }
-    }
 
-    if (!this.name.equals(SULFURAS)) {
-      this.sellIn = this.sellIn - 1;
-    }
+        this.sellIn = this.sellIn - 1;
 
-    if (this.sellIn < EXPIRY_DATE) {
-      if (!this.name.equals(AGED_BRIE)) {
-        if (!this.name.equals(BACKSTAGE_PASSES)) {
-          if (this.quality > MIN_QUALITY_PRODUCT) {
-            if (!this.name.equals(SULFURAS)) {
-              this.quality = this.quality - 1;
-            }
-          }
-        } else {
+        if (this.sellIn < EXPIRY_DATE) {
           this.quality = this.quality - this.quality;
         }
-      } else {
-        if (this.quality < MAX_QUALITY_PRODUCT) {
-          this.quality = this.quality + 1;
+
+        break;
+      case SULFURAS:
+        break;
+      default:
+        if (this.quality > MIN_QUALITY_PRODUCT) {
+          this.quality = this.quality - 1;
         }
-      }
+
+        this.sellIn = this.sellIn - 1;
+
+        if (this.sellIn < EXPIRY_DATE) {
+          if (this.quality > MIN_QUALITY_PRODUCT) {
+            this.quality = this.quality - 1;
+          }
+        }
+        break;
     }
   }
 }
