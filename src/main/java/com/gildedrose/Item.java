@@ -45,17 +45,9 @@ public class Item {
   public void updateQuality() {
     switch (this.name) {
       case AGED_BRIE:
-        if (this.quality < MAX_QUALITY_PRODUCT) {
-          this.quality = this.quality + 1;
-        }
-
         this.sellIn = this.sellIn - 1;
 
-        if (this.sellIn < EXPIRY_DATE) {
-          if (this.quality < MAX_QUALITY_PRODUCT) {
-            this.quality = this.quality + 1;
-          }
-        }
+        this.quality = Math.min(this.quality + (this.sellIn >= EXPIRY_DATE ? 1 : 2), MAX_QUALITY_PRODUCT);
 
         break;
       case BACKSTAGE_PASSES:
