@@ -19,17 +19,30 @@ public class Item {
 
   public int quality;
 
+  /**
+   * Constructeur de la classe Item.
+   * @param name Nom du produit.
+   * @param sellIn Nombre de jours dans lesquels le produit doit être vendu.
+   * @param quality Qualité du produit.
+   */
   public Item(String name, int sellIn, int quality) {
       this.name = name;
       this.sellIn = sellIn;
       this.quality = quality;
   }
 
+  /**
+   * Retourne une chaîne de caractères représentant le produit.
+   * @return Chaîne de caractères représentant le produit.
+   */
   @Override
   public String toString() {
       return this.name + ", " + this.sellIn + ", " + this.quality;
   }
 
+  /**
+   * Met à jour la qualité du produit.
+   */
   public void updateQuality() {
     if (!this.name.equals(AGED_BRIE)
       && !this.name.equals(BACKSTAGE_PASSES)) {
