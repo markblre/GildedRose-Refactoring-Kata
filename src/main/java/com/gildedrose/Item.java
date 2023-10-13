@@ -19,30 +19,17 @@ public class Item {
 
   public int quality;
 
-  /**
-   * Constructeur de la classe Item.
-   * @param name Nom du produit.
-   * @param sellIn Nombre de jours dans lesquels le produit doit être vendu.
-   * @param quality Qualité du produit.
-   */
   public Item(String name, int sellIn, int quality) {
-      this.name = name;
-      this.sellIn = sellIn;
-      this.quality = quality;
+    this.name = name;
+    this.sellIn = sellIn;
+    this.quality = quality;
   }
 
-  /**
-   * Retourne une chaîne de caractères représentant le produit.
-   * @return Chaîne de caractères représentant le produit.
-   */
   @Override
   public String toString() {
-      return this.name + ", " + this.sellIn + ", " + this.quality;
+    return this.name + ", " + this.sellIn + ", " + this.quality;
   }
 
-  /**
-   * Met à jour la qualité du produit.
-   */
   public void updateQuality() {
     this.sellIn--;
 
@@ -51,10 +38,10 @@ public class Item {
         this.quality = Math.min(this.quality + (this.sellIn >= EXPIRY_DATE ? 1 : 2), MAX_QUALITY_PRODUCT);
         break;
       case BACKSTAGE_PASSES:
-        this.quality =  (this.sellIn < EXPIRY_DATE) ? 0 :
-                        (this.sellIn < BACKSTAGE_PASSES_LIMIT_5) ? Math.min(this.quality + 3, MAX_QUALITY_PRODUCT) :
-                        (this.sellIn < BACKSTAGE_PASSES_LIMIT_10) ? Math.min(this.quality + 2, MAX_QUALITY_PRODUCT) :
-                        Math.min(this.quality + 1, MAX_QUALITY_PRODUCT);
+        this.quality =  (this.sellIn < EXPIRY_DATE) ? 0
+                      : (this.sellIn < BACKSTAGE_PASSES_LIMIT_5) ? Math.min(this.quality + 3, MAX_QUALITY_PRODUCT)
+                      : (this.sellIn < BACKSTAGE_PASSES_LIMIT_10) ? Math.min(this.quality + 2, MAX_QUALITY_PRODUCT)
+                      : Math.min(this.quality + 1, MAX_QUALITY_PRODUCT);
 
         break;
       case SULFURAS:
