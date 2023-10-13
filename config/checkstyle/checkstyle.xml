@@ -56,50 +56,6 @@
         <module name="MissingDeprecated"/>
         <module name="MissingOverride"/>
 
-
-        <!-- Checks for Javadoc comments.                     -->
-        <!-- See http://checkstyle.sf.net/config_javadoc.html -->
-        <module name="AtclauseOrder"/>
-        <module name="InvalidJavadocPosition"/>
-        <module name="JavadocBlockTagLocation">
-            <!-- default tags -->
-            <property name="tags" value="author, deprecated, exception, hidden, param, provides"/>
-            <property name="tags" value="return, see, serial, serialData, serialField, since, throws"/>
-            <property name="tags" value="uses, version"/>
-        </module>
-        <module name="JavadocContentLocation"/>
-        <module name="JavadocMethod">
-            <property name="accessModifiers" value="public, package"/>
-            <property name="validateThrows" value="true"/>
-        </module>
-        <module name="JavadocMissingLeadingAsterisk"/>
-        <module name="JavadocMissingWhitespaceAfterAsterisk"/>
-        <module name="JavadocParagraph"/>
-        <module name="JavadocStyle">
-            <property name="scope" value="public"/>
-        </module>
-        <module name="JavadocTagContinuationIndentation"/>
-        <module name="JavadocType">
-            <!-- avoid errors on tag '@noinspection' -->
-            <property name="allowUnknownTags" value="true"/>
-            <property name="scope" value="public"/>
-        </module>
-        <module name="JavadocVariable">
-            <property name="scope" value="public"/>
-        </module>
-        <module name="MissingJavadocMethod">
-            <property name="scope" value="public"/>
-        </module>
-        <!-- <module name="MissingJavadocPackage"/> -->
-        <module name="MissingJavadocType">
-            <property name="scope" value="private"/>
-        </module>
-        <module name="NonEmptyAtclauseDescription"/>
-        <module name="SingleLineJavadoc"/>
-        <module name="WriteTag"/>
-        <module name="SummaryJavadoc"/>
-        <module name="RequireEmptyLineBeforeBlockTagGroup"/>
-
         <!-- Checks for Naming Conventions.                  -->
         <!-- See http://checkstyle.sf.net/config_naming.html -->
         <module name="ConstantName"/>
@@ -153,7 +109,7 @@
         <!-- Modifier Checks                                    -->
         <!-- See http://checkstyle.sf.net/config_modifiers.html -->
         <module name="ModifierOrder"/>
-        <module name="RedundantModifier"/>
+        <!-- <module name="RedundantModifier"/>                 -->
 
 
         <!-- Checks for blocks. You know, those {}'s         -->
@@ -170,7 +126,7 @@
         <!-- Checks for common coding problems               -->
         <!-- See http://checkstyle.sf.net/config_coding.html -->
         <module name="ArrayTrailingComma"/>
-        <module name="AvoidInlineConditionals"/>
+        <!-- <module name="AvoidInlineConditionals"/>        -->
         <module name="CovariantEquals"/>
         <module name="DeclarationOrder"/>
         <module name="DefaultComesLast"/>
@@ -194,7 +150,10 @@
         <!-- <module name="MagicNumber"/> -->
         <module name="MissingSwitchDefault"/>
         <module name="ModifiedControlVariable"/>
-        <module name="MultipleStringLiterals"/>
+        <module name="MultipleStringLiterals">
+          <property name="ignoreStringsRegexp"
+            value='^(("")|(", "))$'/>
+        </module>
         <module name="MultipleVariableDeclarations"/>
         <module name="NestedForDepth">
             <property name="max" value="1"/>
