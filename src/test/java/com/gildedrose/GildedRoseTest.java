@@ -35,7 +35,7 @@ class GildedRoseTest {
 
   // Produits non périmés (tests à la borne inférieure)
   @Test
-  @DisplayName("Test de mise à jour de la qualité d'un produit non périmé avec une qualité initiale de 1.")
+  @DisplayName("Test de la mise à jour de la qualité d'un produit non périmé avec une qualité initiale de 1.")
   void testMiseAJourQualiteProduitNonPerimeQualiteInitiale1() {
     Item element = new Item("product", 10, 1);
     GildedRose app = new GildedRose(new Item[] {element});
@@ -44,7 +44,7 @@ class GildedRoseTest {
   }
 
   @Test
-  @DisplayName("Test de mise à jour de la qualité d'un produit non périmé avec une qualité initiale de 0.")
+  @DisplayName("Test de la mise à jour de la qualité d'un produit non périmé avec une qualité initiale de 0.")
   void testMiseAJourQualiteProduitNonPerimeQualiteInitiale0() {
     Item element = new Item("product", 10, 0);
     GildedRose app = new GildedRose(new Item[] {element});
@@ -73,7 +73,7 @@ class GildedRoseTest {
   }
 
   @Test
-  @DisplayName("Test de mise à jour de la qualité d'un produit périmé avec une qualité initiale de 1.")
+  @DisplayName("Test de la mise à jour de la qualité d'un produit périmé avec une qualité initiale de 1.")
   void testMiseAJourQualiteProduitPerimeQualiteInitiale1() {
     Item element = new Item("product", -10, 1);
     GildedRose app = new GildedRose(new Item[] {element});
@@ -82,9 +82,9 @@ class GildedRoseTest {
   }
 
   @Test
-  @DisplayName("Test de mise à jour de la qualité d'un produit périmé avec une qualité initiale de 0.")
+  @DisplayName("Test de la mise à jour de la qualité d'un produit périmé avec une qualité initiale de 0.")
   void testMiseAJourQualiteProduitPerimeQualiteInitiale0() {
-    Item element = new Item("product", 0, 0);
+    Item element = new Item("product", -10, 0);
     GildedRose app = new GildedRose(new Item[] {element});
     app.updateQuality();
     assertEquals(0, element.quality, "La qualité d'un produit périmé avec une qualité initiale de 0 doit être de 0.");
@@ -112,7 +112,7 @@ class GildedRoseTest {
 
   // Bries vieillis non périmés (tests à la borne supérieure)
   @Test
-  @DisplayName("Test de mise à jour de la qualité d'un brie vieilli non périmé avec une qualité initiale de 49.")
+  @DisplayName("Test de la mise à jour de la qualité d'un brie vieilli non périmé avec une qualité initiale de 49.")
   void testMiseAJourQualiteBrieVieilliNonPerimeQualiteInitiale49() {
     Item element = new Item("Aged Brie", 10, 49);
     GildedRose app = new GildedRose(new Item[] {element});
@@ -121,7 +121,7 @@ class GildedRoseTest {
   }
 
   @Test
-  @DisplayName("Test de mise à jour de la qualité d'un brie vieilli non périmé avec une qualité initiale de 50.")
+  @DisplayName("Test de la mise à jour de la qualité d'un brie vieilli non périmé avec une qualité initiale de 50.")
   void testMiseAJourQualiteBrieVieilliNonPerimeQualiteInitiale50() {
     Item element = new Item("Aged Brie", 10, 50);
     GildedRose app = new GildedRose(new Item[] {element});
@@ -198,7 +198,7 @@ class GildedRoseTest {
 
   // Pass qui périment dans plus de 10 jours
   @Test
-  @DisplayName("Test de mise à jour de la qualité d’un pass qui périme dans 11 jours (Cas d'un pass de plus de 10 jours).")
+  @DisplayName("Test de la mise à jour de la qualité d’un pass qui périme dans 11 jours (Cas d'un pass de plus de 10 jours).")
   void testMiseAJourQualitePassQuiPerimeDansPlusDe10Jours() {
     Item element = new Item("Backstage passes to a TAFKAL80ETC concert", 11, 25);
     GildedRose app = new GildedRose(new Item[] {element});
@@ -208,7 +208,7 @@ class GildedRoseTest {
 
   // Pass qui périment dans plus de 10 jours (tests à la borne supérieure)
   @Test
-  @DisplayName("Test de mise à jour de la qualité d'un pass qui périme dans plus de 10 jours avec une qualité initiale de 49.")
+  @DisplayName("Test de la mise à jour de la qualité d'un pass qui périme dans plus de 10 jours avec une qualité initiale de 49.")
   void testMiseAJourQualitePassQuiPerimeDansPlusDe10JoursQualiteInitiale49() {
     Item element = new Item("Backstage passes to a TAFKAL80ETC concert", 15, 49);
     GildedRose app = new GildedRose(new Item[] {element});
@@ -217,7 +217,7 @@ class GildedRoseTest {
   }
 
   @Test
-  @DisplayName("Test de mise à jour de la qualité d'un pass qui périme dans plus de 10 jours avec une qualité initiale de 50.")
+  @DisplayName("Test de la mise à jour de la qualité d'un pass qui périme dans plus de 10 jours avec une qualité initiale de 50.")
   void testMiseAJourQualitePassQuiPerimeDansPlusDe10JoursQualiteInitiale50() {
     Item element = new Item("Backstage passes to a TAFKAL80ETC concert", 15, 50);
     GildedRose app = new GildedRose(new Item[] {element});
@@ -227,7 +227,7 @@ class GildedRoseTest {
 
   // Pass qui périment dans un intervalle de 6 à 10 jours
   @Test
-  @DisplayName("Test de mise à jour de la qualité d’un pass qui périme dans 6 jours (Cas d'un pass qui périme dans un intervalle de 6 à 10 jours).")
+  @DisplayName("Test de la mise à jour de la qualité d’un pass qui périme dans 6 jours (Cas d'un pass qui périme dans un intervalle de 6 à 10 jours).")
   void testMiseAJourQualitePassQuiPerimeDans6Jours() {
     Item element = new Item("Backstage passes to a TAFKAL80ETC concert", 6, 25);
     GildedRose app = new GildedRose(new Item[] {element});
@@ -236,7 +236,7 @@ class GildedRoseTest {
   }
 
   @Test
-  @DisplayName("Test de mise à jour de la qualité d’un pass qui périme dans 10 jours (Cas d'un pass qui périme dans un intervalle de 6 à 10 jours).")
+  @DisplayName("Test de la mise à jour de la qualité d’un pass qui périme dans 10 jours (Cas d'un pass qui périme dans un intervalle de 6 à 10 jours).")
   void testMiseAJourQualitePassQuiPerimeDans10Jours() {
     Item element = new Item("Backstage passes to a TAFKAL80ETC concert", 10, 25);
     GildedRose app = new GildedRose(new Item[] {element});
@@ -274,7 +274,7 @@ class GildedRoseTest {
 
   // Pass qui périment dans 5 jours ou moins
   @Test
-  @DisplayName("Test de mise à jour de la qualité d’un pass qui périme dans 1 jours (Cas d'un pass qui périme dans 5 jours ou moins).")
+  @DisplayName("Test de la mise à jour de la qualité d’un pass qui périme dans 1 jours (Cas d'un pass qui périme dans 5 jours ou moins).")
   void testMiseAJourQualitePassQuiPerimeDans1Jour() {
     Item element = new Item("Backstage passes to a TAFKAL80ETC concert", 1, 25);
     GildedRose app = new GildedRose(new Item[] {element});
@@ -283,7 +283,7 @@ class GildedRoseTest {
   }
 
   @Test
-  @DisplayName("Test de mise à jour de la qualité d’un pass qui périme dans 5 jours (Cas d'un pass qui périme dans 5 jours ou moins).")
+  @DisplayName("Test de la mise à jour de la qualité d’un pass qui périme dans 5 jours (Cas d'un pass qui périme dans 5 jours ou moins).")
   void testMiseAJourQualitePassQuiPerimeDans5Jours() {
     Item element = new Item("Backstage passes to a TAFKAL80ETC concert", 5, 25);
     GildedRose app = new GildedRose(new Item[] {element});
@@ -330,7 +330,7 @@ class GildedRoseTest {
 
   // Pass périmés
   @Test
-  @DisplayName("Test de mise à jour de la qualité d’un pass périmé.")
+  @DisplayName("Test de la mise à jour de la qualité d’un pass périmé.")
   void testMiseAJourQualitePassPerime() {
     Item element = new Item("Backstage passes to a TAFKAL80ETC concert", 0, 0);
     GildedRose app = new GildedRose(new Item[] {element});
