@@ -337,4 +337,108 @@ class GildedRoseTest {
     app.updateQuality();
     assertEquals(0, element.quality, "la qualité d'un pass périmé doit être de 0.");
   }
+
+  //// CONJURED
+  @Test
+  @DisplayName("Test de la mise à jour du nombre de jours restant pour vendre un produit invoqué")
+  void testMiseAJourNombreDeJoursRestantAvantExpirationProduitInvoque() {
+    Item element = new Item("Conjured", 10, 25);
+    GildedRose app = new GildedRose(new Item[] {element});
+    app.updateQuality();
+    assertEquals(9, element.sellIn, "Le nombre de jours restant avant expiration d'un produit invoqué doit diminuer de 1 chaque jour.");
+  }
+
+  // Produits invoqués non périmés
+  @Test
+  @DisplayName("Test de la mise à jour de la qualité d’un produit invoqué non périmé.")
+  void testMiseAJourQualiteProduitInvoqueNonPerime() {
+    Item element = new Item("Conjured", 1, 25);
+    GildedRose app = new GildedRose(new Item[] {element});
+    app.updateQuality();
+    assertEquals(23, element.quality, "La qualité d'un produit invoqué non périmé doit diminuer de 2 chaque jour.");
+  }
+
+  // Produits invoqués non périmés (tests à la borne inférieure)
+  @Test
+  @DisplayName("Test de la mise à jour de la qualité d'un produit invoqué non périmé avec une qualité initiale de 2.")
+  void testMiseAJourQualiteProduitInvoqueNonPerimeQualiteInitiale2() {
+    Item element = new Item("Conjured", 10, 2);
+    GildedRose app = new GildedRose(new Item[] {element});
+    app.updateQuality();
+    assertEquals(0, element.quality, "La qualité d'un produit non périmé avec une qualité initiale de 2 doit être de 0.");
+  }
+  @Test
+  @DisplayName("Test de la mise à jour de la qualité d'un produit invoqué non périmé avec une qualité initiale de 1.")
+  void testMiseAJourQualiteProduitInvoqueNonPerimeQualiteInitiale1() {
+    Item element = new Item("Conjured", 10, 1);
+    GildedRose app = new GildedRose(new Item[] {element});
+    app.updateQuality();
+    assertEquals(0, element.quality, "La qualité d'un produit non périmé avec une qualité initiale de 1 doit être de 0.");
+  }
+
+  @Test
+  @DisplayName("Test de la mise à jour de la qualité d'un produit invoqué non périmé avec une qualité initiale de 0.")
+  void testMiseAJourQualiteProduitInvoqueNonPerimeQualiteInitiale0() {
+    Item element = new Item("Conjured", 10, 0);
+    GildedRose app = new GildedRose(new Item[] {element});
+    app.updateQuality();
+    assertEquals(0, element.quality, "La qualité d'un produit non périmé avec une qualité initiale de 0 doit être de 0.");
+  }
+
+  // Produits périmés
+  @Test
+  @DisplayName("Test de la mise à jour de la qualité d’un produit invoqué périmé.")
+  void testMiseAJourQualiteProduitInvoquePerime() {
+    Item element = new Item("Conjured", 0, 25);
+    GildedRose app = new GildedRose(new Item[] {element});
+    app.updateQuality();
+    assertEquals(21, element.quality, "La qualité d'un produit invoqué périmé doit diminuer de 4 chaque jour.");
+  }
+
+  // Produits invoqués périmés (tests à la borne inférieure)
+
+  @Test
+  @DisplayName("Test de la mise à jour de la qualité d’un produit invoqué périmé avec une qualité initiale de 4.")
+  void testMiseAJourQualiteProduitInvoquePerimeQualiteInitiale4() {
+    Item element = new Item("Conjured", -10, 4);
+    GildedRose app = new GildedRose(new Item[] {element});
+    app.updateQuality();
+    assertEquals(0, element.quality, "La qualité d'un produit invoqué périmé avec une qualité initiale de 4 doit être de 0.");
+  }
+
+  @Test
+  @DisplayName("Test de la mise à jour de la qualité d’un produit invoqué périmé avec une qualité initiale de 3.")
+  void testMiseAJourQualiteProduitInvoquePerimeQualiteInitiale3() {
+    Item element = new Item("Conjured", -10, 3);
+    GildedRose app = new GildedRose(new Item[] {element});
+    app.updateQuality();
+    assertEquals(0, element.quality, "La qualité d'un produit invoqué périmé avec une qualité initiale de 3 doit être de 0.");
+  }
+
+  @Test
+  @DisplayName("Test de la mise à jour de la qualité d’un produit invoqué périmé avec une qualité initiale de 2.")
+  void testMiseAJourQualiteProduitInvoquePerimeQualiteInitiale2() {
+    Item element = new Item("Conjured", -10, 2);
+    GildedRose app = new GildedRose(new Item[] {element});
+    app.updateQuality();
+    assertEquals(0, element.quality, "La qualité d'un produit invoqué périmé avec une qualité initiale de 2 doit être de 0.");
+  }
+
+  @Test
+  @DisplayName("Test de la mise à jour de la qualité d'un produit invoqué périmé avec une qualité initiale de 1.")
+  void testMiseAJourQualiteProduitInvoquePerimeQualiteInitiale1() {
+    Item element = new Item("Conjured", -10, 1);
+    GildedRose app = new GildedRose(new Item[] {element});
+    app.updateQuality();
+    assertEquals(0, element.quality, "La qualité d'un produit périmé avec une qualité initiale de 1 doit être de 0.");
+  }
+
+  @Test
+  @DisplayName("Test de la mise à jour de la qualité d'un produit invoqué périmé avec une qualité initiale de 0.")
+  void testMiseAJourQualiteProduitInvoquePerimeQualiteInitiale0() {
+    Item element = new Item("Conjured", -10, 0);
+    GildedRose app = new GildedRose(new Item[] {element});
+    app.updateQuality();
+    assertEquals(0, element.quality, "La qualité d'un produit périmé avec une qualité initiale de 0 doit être de 0.");
+  }
 }
