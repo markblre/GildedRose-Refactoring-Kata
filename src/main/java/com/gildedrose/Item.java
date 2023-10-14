@@ -38,9 +38,9 @@ public class Item {
         this.quality = Math.min(this.quality + (this.sellIn >= EXPIRY_DATE ? 1 : 2), MAX_QUALITY_PRODUCT);
         break;
       case BACKSTAGE_PASSES:
-        this.quality =  (this.sellIn < EXPIRY_DATE) ? 0
-                      : (this.sellIn < BACKSTAGE_PASSES_LIMIT_5) ? Math.min(this.quality + 3, MAX_QUALITY_PRODUCT)
-                      : (this.sellIn < BACKSTAGE_PASSES_LIMIT_10) ? Math.min(this.quality + 2, MAX_QUALITY_PRODUCT)
+        this.quality =  this.sellIn < EXPIRY_DATE ? 0
+                      : this.sellIn < BACKSTAGE_PASSES_LIMIT_5 ? Math.min(this.quality + 3, MAX_QUALITY_PRODUCT)
+                      : this.sellIn < BACKSTAGE_PASSES_LIMIT_10 ? Math.min(this.quality + 2, MAX_QUALITY_PRODUCT)
                       : Math.min(this.quality + 1, MAX_QUALITY_PRODUCT);
 
         break;
