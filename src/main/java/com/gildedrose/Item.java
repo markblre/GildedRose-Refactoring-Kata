@@ -37,17 +37,19 @@ public class Item {
       case AGED_BRIE:
         this.quality = Math.min(this.quality + (this.sellIn >= EXPIRY_DATE ? 1 : 2), MAX_QUALITY_PRODUCT);
         break;
+
       case BACKSTAGE_PASSES:
         this.quality =  this.sellIn < EXPIRY_DATE ? 0
                       : this.sellIn < BACKSTAGE_PASSES_LIMIT_5 ? Math.min(this.quality + 3, MAX_QUALITY_PRODUCT)
                       : this.sellIn < BACKSTAGE_PASSES_LIMIT_10 ? Math.min(this.quality + 2, MAX_QUALITY_PRODUCT)
                       : Math.min(this.quality + 1, MAX_QUALITY_PRODUCT);
-
         break;
+
       case SULFURAS:
         this.quality = 80;
         this.sellIn = -1;
         break;
+
       default:
         this.quality = Math.max(this.quality - (this.sellIn >= EXPIRY_DATE ? 1 : 2), MIN_QUALITY_PRODUCT);
         break;
