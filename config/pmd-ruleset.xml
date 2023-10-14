@@ -4,12 +4,12 @@
     xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 http://pmd.sourceforge.net/ruleset_2_0_0.xsd">
- 
+
   <description>
       Java custom rule set
   </description>
- 
-<!-- <rule ref="rulesets/java/basic.xml"/> -->
+
+  <rule ref="rulesets/java/basic.xml"/>
 <!-- <rule ref="rulesets/java/braces.xml" /> -->
 <!-- <rule ref="rulesets/java/controversial.xml"> -->
 <!--     <exclude name="OnlyOneReturn" /> -->
@@ -19,7 +19,7 @@
 <!-- <rule ref="rulesets/java/coupling.xml"> -->
 <!--     <exclude name="LawOfDemeter"/> -->
 <!-- </rule> -->
-<!-- <rule ref="rulesets/java/design.xml" /> -->
+  <rule ref="rulesets/java/design.xml" />
 <!-- <rule ref="rulesets/java/empty.xml" /> -->
 <!-- <rule ref="rulesets/java/finalizers.xml" /> -->
 <!-- <rule ref="rulesets/java/imports.xml" /> -->
@@ -43,8 +43,8 @@
 <!-- </rule> -->
 <!-- <rule ref="rulesets/java/strings.xml" /> -->
 <!-- <rule ref="rulesets/java/typeresolution.xml" /> -->
-<!-- <rule ref="rulesets/java/unnecessary.xml" /> -->
-<rule ref="rulesets/java/unusedcode.xml" />
+  <rule ref="rulesets/java/unnecessary.xml" />
+  <rule ref="rulesets/java/unusedcode.xml" />
 
 <!-- ========================================================== -->
 <!-- <rule ref="rulesets/java/codesize.xml" /> -->

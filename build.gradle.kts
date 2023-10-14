@@ -48,16 +48,8 @@ pmd {
   toolVersion = "6.55.0"
   rulesMinimumPriority.set(5)
   threads.set(4)
-  ruleSets = listOf(
-    "category/java/bestpractices.xml",
-    "category/java/codestyle.xml",
-    "category/java/design.xml",
-    "category/java/documentation.xml",
-    "category/java/errorprone.xml",
-    "category/java/multithreading.xml",
-    "category/java/performance.xml",
-    "category/java/security.xml",
-  )
+  ruleSetFiles = files("config/pmd-ruleset.xml")
+  ruleSets = emptyList()
 }
 
 pitest {
