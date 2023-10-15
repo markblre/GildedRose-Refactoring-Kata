@@ -12,6 +12,7 @@ public class Item {
   public static final String AGED_BRIE = "Aged Brie";
   public static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
   public static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
+  public static final String CONJURED = "Conjured";
 
   public String name;
 
@@ -48,6 +49,10 @@ public class Item {
       case SULFURAS:
         this.quality = 80;
         this.sellIn = -1;
+        break;
+
+      case CONJURED:
+        this.quality = Math.max(this.quality - (this.sellIn >= EXPIRY_DATE ? 2 : 4), MIN_QUALITY_PRODUCT);
         break;
 
       default:
